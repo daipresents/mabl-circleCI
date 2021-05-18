@@ -5,7 +5,7 @@ orbs:
       machine: true
       steps:
         - mabl-trigger-tests/test:
-            api-key: $MABL_API_KEY
+            api-key: MABL_API_KEY
             browsers: chrome
             labels: CCI
   mabl-trigger-tests: mabl/trigger-tests@1.0.4
