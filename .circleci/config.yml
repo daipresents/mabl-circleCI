@@ -8,8 +8,8 @@ jobs:
       - mabl-trigger-tests/run-tests:
           api-key: MABL_API_KEY
           browsers: chrome
-          environment-id: MABL_ENV_ID
-          application-id: MABL_APP_ID
+          environment-id: ${MABL_ENV_ID}
+          application-id: ${MABL_APP_ID}
           labels: CCI
 workflows:
   run-tests:
