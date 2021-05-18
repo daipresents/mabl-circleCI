@@ -1,14 +1,14 @@
-version: '2.1'
+version: 2.1
 orbs:
+  trigger-tests: mabl/trigger-tests@1.0.5
   jobs:
     run-mabl-tests:
       machine: true
       steps:
-        - mabl-trigger-tests/test:
+        - trigger-tests/test:
             api-key: MABL_API_KEY
             browsers: chrome
             labels: CCI
-  mabl-trigger-tests: mabl/trigger-tests@1.0.4
 workflows:
   version: 2
   e2e-test:
