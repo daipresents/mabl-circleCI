@@ -1,18 +1,15 @@
 version: '2.1'
 orbs:
+  trigger-tests: mabl/trigger-tests@1.0.5
   jobs:
     run-mabl-tests:
       machine: true
       steps:
-        - mabl-trigger-tests/test:
+        - trigger-tests/test:
             api-key: MABL_API_KEY
-            application-id: myApplicationID-a
-            branch: developmentBranch
             browsers: chrome
-            environment-id: myenvironmentID-e
-            labels: myPlanLabel
-  mabl-trigger-tests: mabl/trigger-tests@1.0.5
+            labels: CCI
 workflows:
-  test-my-app:
+  run-e2e-workflow:
     jobs:
       - run-mabl-tests
