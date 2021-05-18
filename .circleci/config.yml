@@ -1,15 +1,17 @@
-version: 2.1
+version: '2.1'
+orbs:
+  mabl-trigger-tests: mabl/trigger-tests@1.0.5
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:10.0-browsers
+  run-mabl-tests:
+    machine: true
     steps:
-      - run:
-          name: "Setup custom environment variables"
-          command: echo $MABL_API_KEY
-
+      - mabl-trigger-tests/test:
+          api-key: $MABL_API_KEY
+          browsers: chrome
+          labels: CCI
+          
 workflows:
-  build:
+  run-only-e2e:
     jobs:
-      - build
+      - run-mabl-tests
