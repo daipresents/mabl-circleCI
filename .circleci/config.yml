@@ -10,7 +10,7 @@ jobs:
           api-key: MABL_API_KEY
           browsers: chrome
           environment-id: bIIfJiJ4lefJcKozgmNBPw-e
-          application-id: MABL_APP_ID
+          application-id: jrMAwZAMF7Pn6cg8WUlgmQ-a
           labels: CCI
 
 workflows:
