@@ -3,7 +3,7 @@ orbs:
   mabl-trigger-tests: mabl/trigger-tests@1.0.5
 
 jobs:
-  build:
+  build-stg:
     docker:
       - image: cimg/base:stable
     steps:
@@ -11,7 +11,7 @@ jobs:
         name: "アプリのビルド"
         command: echo 'Buidling app'
 
-  deploy:
+  deploy-stg:
     docker:
       - image: cimg/base:stable
     steps:
@@ -19,7 +19,7 @@ jobs:
         name: "アプリのビルド"
         command: echo 'Buidling app'
 
-  run-mabl:
+  run-mabl-stg:
     machine: true
     steps:
       - mabl-trigger-tests/run-tests:
@@ -30,6 +30,8 @@ jobs:
           labels: CircleCI
 
 workflows:
-  run-tests:
+  deploy-stg-env:
     jobs:
-      - run-mabl
+      - build-stg
+      - deploy-stg
+      - run-mabl-stg
