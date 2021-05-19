@@ -9,14 +9,16 @@ jobs:
     steps:
      - run:
         name: "アプリのビルド"
-        command: echo 'Buidling app...'
+        command: echo 'Buidling app'
+
   deploy:
     docker:
       - image: cimg/base:stable
     steps:
      - run:
-        name: "アプリのデプロイ"
-        command: echo 'Deploying app...'
+        name: "アプリのビルド"
+        command: echo 'Buidling app'
+
   run-mabl:
     machine: true
     steps:
@@ -28,8 +30,6 @@ jobs:
           labels: CircleCI
 
 workflows:
-  build-and-e2etest:
+  run-tests:
     jobs:
-      - build
-      - deploy-app
       - run-mabl
