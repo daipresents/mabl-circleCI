@@ -3,7 +3,21 @@ orbs:
   mabl-trigger-tests: mabl/trigger-tests@1.0.5
 
 jobs:
-  run-e2e-test-on-mabl:
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+     - run:
+        name: "アプリのビルド"
+        command: echo 'Buidling app...'
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+     - run:
+        name: "アプリのデプロイ"
+        command: echo 'Deploying app...'
+  run-mabl:
     machine: true
     steps:
       - mabl-trigger-tests/run-tests:
@@ -11,9 +25,11 @@ jobs:
           browsers: chrome
           environment-id: bIIfJiJ4lefJcKozgmNBPw-e
           application-id: jrMAwZAMF7Pn6cg8WUlgmQ-a
-          labels: CCI
+          labels: CircleCI
 
 workflows:
-  run-tests:
+  build-and-e2etest:
     jobs:
-      - run-e2e-test-on-mabl
+      - build
+      - deploy-app
+      - run-mabl
