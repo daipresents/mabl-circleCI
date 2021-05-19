@@ -9,6 +9,9 @@ jobs:
           api-key: MABL_API_KEY
           environment-id: bIIfJiJ4lefJcKozgmNBPw-e
           application-id: jrMAwZAMF7Pn6cg8WUlgmQ-a
+          browsers: chrome
+          labels: CircleCI
+          mabl-branch: master
 workflows:
   test-my-app:
     jobs:
