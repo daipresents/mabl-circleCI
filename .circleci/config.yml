@@ -33,5 +33,9 @@ workflows:
   deploy-stg-env:
     jobs:
       - build-stg
-      - deploy-stg
-      - run-mabl-stg
+      - deploy-stg:
+         requires:
+          - build-stg
+      - run-mabl-stg:
+         requires:
+          - deploy-stg
